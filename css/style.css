@@ -1,0 +1,647 @@
+@charset "utf-8";
+
+/********** COMMON **********/
+
+.flex {
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+h1 {
+  font-size: 6rem;
+  font-weight: normal;
+  color: #fff;
+  text-align: center;
+}
+
+h1.acss {
+  color: red;
+}
+
+h2 {
+  font-size: 4rem;
+  font-weight: 100;
+  color: #fff;
+  text-decoration: underline;
+  text-align: center;
+}
+
+h3 {
+  font-size: 2.5rem;
+  color: #fff;
+  font-weight: 100;
+  text-align: center;
+}
+
+h4 {
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 100;
+  text-align: center;
+}
+
+h5 {
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 100;
+  text-align: center;
+}
+
+h6 {
+  font-size: 0.800rem;
+  color: #fff;
+  font-weight: 100;
+  line-height: 25px;
+}
+
+.scroll {
+  transition: 1.8s ease-in-out;
+  transform: translateY(100px);
+  opacity: 0;
+}
+
+.scroll.fadein {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.scroll_right {
+  -webkit-transition: 0.8s ease-in-out;
+  -moz-transition: 0.8s ease-in-out;
+  -o-transition: 0.8s ease-in-out;
+  transition: 0.8s ease-in-out;
+  transform: translateY(40px);
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+}
+.scroll_right.fadein {
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+  -moz-opacity: 1.0;
+  transform: translateX(0);
+}
+
+/********** HEADER **********/
+#header {
+  position: relative;
+  /* overflow: hidden; */
+  width: 100%;
+}
+
+.h-title {
+  position: fixed;
+  left: 35px;
+  top: 25px;
+  font-size: 1.50rem;
+  z-index: 10;
+  opacity: 0;
+  transition: 0.8s ease-in-out;
+}
+
+.h-title.fadein {
+  opacity: 1;
+}
+
+.side-menus {
+  transform:rotate(-90deg);
+  position: fixed;
+  right: -150px;
+  bottom: 220px;
+  display: flex;
+  /* border: red solid 1px; */
+}
+
+.side-menus a {
+  display: block;
+}
+
+.s-menu {
+  width: 180px;
+  padding: 16px 0;
+  text-align: center;
+  border: #fff solid 1px;
+  border-bottom: none;
+}
+
+#mainvisuals {
+  background-color: #000;
+  height: 100vh;
+  /* width: calc(100% / 3); */
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: -20;
+
+  background-image:
+    /* 1枚目の背景画像のパス */
+    url("../img/mainvisual1.jpg"),
+    /* 2枚目の背景画像のパス */
+    url("../img/mainvisual2.jpg"),
+    /* 3枚目の背景画像のパス */
+    url("../img/mainvisual3.jpg");
+
+  background-position:
+    /* 1枚目の背景画像の表示位置 */
+    left 0px top,
+    /* 2枚目の背景画像の表示位置 */
+    top,    
+    /* 3枚目の背景画像の表示位置 */
+    right 0px top;
+
+  background-repeat:
+    /* 1枚目の背景画像の設定 */
+    no-repeat,
+    /* 2枚目の背景画像の設定 */
+    no-repeat,
+    /* 3枚目の背景画像の設定 */
+    no-repeat;
+
+  background-size:
+    /* 1、2枚目の背景画像の共通サイズ */
+    calc(100% / 3) auto, calc(100% / 3) auto, calc(100% / 3) auto;
+    /* calc(100% / 3) cover, calc(101% / 3) cover, calc(100% / 3) cover; */
+    /* 100px; */
+}
+
+#mainvisuals-sp {
+  background-image: none;
+}
+
+#mainvisuals.acss {
+  visibility: hidden;
+}
+
+.hamburger {
+  display : block;
+  position: fixed;
+  z-index : 3;
+  right : 35px;
+  top   : 20px;
+  width : 42px;
+  height: 42px;
+  cursor: pointer;
+  text-align: center;
+  opacity: 0;
+  transition: 0.8s ease-in-out;
+}
+
+.hamburger.fadein {
+  opacity: 1;
+}
+
+.hamburger span {
+  display : block;
+  position: absolute;
+  width   : 35px;
+  height  : 2px ;
+  left    : 6px;
+  background : #ffffff;
+  -webkit-transition: 0.7s ease-in-out;
+  -moz-transition   : 0.7s ease-in-out;
+  transition        : 0.7s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+  top: 15px;
+}
+
+.hamburger span:nth-child(2) {
+  top: 27px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 39px;
+}
+
+/********** WHEN NAVI IS OPENING **********/
+/* ナビ開いてる時のボタン */
+.hamburger.active span:nth-child(1) {
+  top : 30px;
+  left: 6px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform   : rotate(-45deg);
+  transform        : rotate(-45deg);
+}
+
+.hamburger.active span:nth-child(2),
+.hamburger.active span:nth-child(3) {
+  top: 30px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform   : rotate(45deg);
+  transform        : rotate(45deg);
+}
+
+nav.menu {
+  position: fixed;
+  z-index : 2;
+  top  : 0;
+  left : 0;
+  padding-top: 80px;
+  padding-bottom: 50px;
+  font-size: 0.925rem;
+  color: #ffffff;
+  background: #000;
+  text-align: center;
+  transform: translateY(-100%);
+  transition: all 0.7s;
+  width: 100%;
+}
+
+nav.menu ul {
+  background: #000;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+}
+
+nav.menu ul li {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  /* border-bottom: 1px solid #fff; */
+}
+
+nav.menu ul li:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+nav.menu ul li:hover{
+  background :gray;
+}
+
+nav.menu ul li a {
+  display: block;
+  color: #fff;
+  padding: 1em 0;
+  text-decoration :none;
+}
+
+/* このクラスを、jQueryで付与・削除する */
+nav.menu.active {
+  transform: translateY(0%);
+}
+
+/********** MAIN Common**********/
+.main {
+  margin-top: 1000px;
+  background-color: #000;
+  position: relative;
+}
+
+.main.acss {
+  /* background-color: transparent; */
+  background-image: url("../img/bg-flower.png");
+  min-height: 100%;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  animation: fadeIn 1.5s ease 2s 1 forwards;
+    -webkit-animation: fadeIn 1.5s ease 0s 1 forwards;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0.4} /* 始め */
+  100% {opacity:1} /* 終わり */
+}
+
+.main.cntct {
+  /* background-color: transparent; */
+  background-image: url("../img/bg-flower.png");
+  min-height: 100%;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  animation: fadeOut 1s ease 0s 1 forwards;
+    -webkit-animation: fadeOut 1s ease 0s 1 forwards;
+  background-color: #000;
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1} /* 終わり */
+  100% {opacity: 0.4} /* 始め */
+}
+
+.b-cntct {
+  padding-bottom: 200px;
+}
+
+.main.acss::before {
+  /* .bg-flower.acss::before { */
+    content: '';
+    /* ↓暗いオーバーレイを半透明で配置 */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: green; */
+    /* ↓全体を覆うように配置 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+#access {
+  position: relative;
+}
+
+/* .bg-flower { */
+  /* background-image: url("../img/bg-flower.png"); */
+  /* position: relative; */
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center; */
+  /* background-position: center bottom 2000px; */
+  /* z-index: -2; */
+  /* opacity: 0; */
+  /* padding-bottom: 500px; */
+/* } */
+
+/* .bg-flower.acss {
+  opacity: 1;
+  background-color: green;
+} */
+
+#title {
+  padding-top: 150px;
+}
+
+#information, #gallery, #access, #contact {
+  margin-top: 150px;
+}
+
+/********** MAIN Information **********/
+#information {
+  margin-top: 100px;
+}
+
+/********** MAIN Gallery **********/
+#gallery h2 {
+  margin-bottom: 30px;
+}
+
+#gallery .container {
+  width: 50vw;
+  margin: 0 auto;
+  position: relative;
+}
+
+.g-img {
+  width: 48%;
+}
+
+.g-img.acss {
+  visibility: hidden;
+}
+
+.g-left {
+  text-align: left;
+}
+
+.g-right {
+  text-align: right;
+}
+
+/********** MAIN Access **********/
+
+#access {
+  padding-bottom: 500px;
+  position: relative;
+}
+
+#access h4 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+#access .map {
+  margin: 30px auto 0 auto;
+  text-align: center;
+  border: #fff solid 1px;
+  width: 300px;
+  padding: 15px 0px;
+}
+
+#access .map a {
+  display: block;
+}
+
+/********** MAIN Contact **********/
+#contact {
+  /* margin-top: 500px; */
+  /* margin-bottom: 250px; */
+  border-bottom: #fff solid 2px;
+}
+
+.inquiry {
+  width: 500px;
+  border: #fff solid 1px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 35px 0;
+  margin-top: 30px;
+  position: relative;
+}
+
+.inquiry a {
+  display: block;
+  font-size: 1.10rem;
+}
+
+.inquiry:last-child {
+  margin-bottom: 200px;
+}
+
+.inquiry::before {
+  content:"";
+  display:block;
+  width:25px;
+  height:1.5px;
+  background-color: #fff;
+  position:absolute;
+  bottom:47px;
+  right:-53px;
+  transform: rotate(45deg);
+  transition: all 0.7s;
+}
+
+.inquiry::after {
+  content:"";
+  display:block;
+  width:160px;
+  height:1.5px;
+  background-color: #fff;
+  position:absolute;
+  bottom:38px;
+  right:-50px;
+  transition: all 0.7s;
+}
+
+.inquiry:hover:before {
+  /* transform: rotate(45deg);
+  transform: translateX(20px); */
+  right: -73px;
+}
+
+.inquiry:hover:after {
+  /* transform: translate(20px); */
+  right: -70px;
+}
+
+/********** FOOTER **********/
+footer {
+  background-color: #000;
+}
+
+.copyright {
+  color: #fff;
+  font-size: 0.750rem;
+  text-align: center;
+  width: 120px;
+  margin-right: 30px;
+}
+
+.between {
+  justify-content: space-between;
+  padding-bottom: 80px;
+}
+
+.f-adress {
+  padding-top: 100px;
+  margin-bottom: 30px;
+}
+
+.f-adress, .snss {
+  margin-left: 30px;
+}
+
+.sns {
+  width: 90px;
+  font-size: 0.800rem;
+}
+
+/********** SMART PHONE **********/
+  @media screen and (max-width:900px) {
+  /********** SP COMMON **********/
+  h1 {
+    font-size: 3rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.75rem;
+  }
+  
+  h4 {
+    font-size: 1.25rem;
+  }
+  
+  h5 {
+    font-size: 1.00rem;
+  }
+  
+  h6 {
+    font-size: 0.75rem;
+  }
+  
+  /********** SP HEADER **********/
+  #mainvisuals {
+    background-image: none;
+  }
+
+  #mainvisuals-sp {
+    height: 100vh; 
+    width: 100%;
+    position: fixed;
+    top: 0;
+    /* z-index: -20;  */
+    /* width: 1500px; */
+    /* display: block; */
+    
+    background-image:
+      /* 1枚目の背景画像のパス */
+      url("../img/mainvisual1.jpg"),
+      /* 2枚目の背景画像のパス */
+      url("../img/mainvisual2.jpg"),
+      /* 3枚目の背景画像のパス */
+      url("../img/mainvisual3.jpg");
+  
+    background-position: 
+      /* 1枚目の背景画像の表示位置 */
+      /* left -100vw center, */
+      left -900px center,
+      /* 2枚目の背景画像の表示位置 */
+      center,    
+      /* 3枚目の背景画像の表示位置 */
+      /* right -100vw center; */
+      right 900px center;
+  
+    background-repeat:
+      /* 1枚目の背景画像の設定 */
+      no-repeat,
+      /* 2枚目の背景画像の設定 */
+      no-repeat,
+      /* 3枚目の背景画像の設定 */
+      no-repeat;
+  
+    background-size:
+      /* 1、2枚目の背景画像の共通サイズ */
+      /* calc(100% / 3) auto, calc(101% / 3) auto, calc(100% / 3) auto; */
+      100% auto, 100% auto, 100% auto;
+      /* 100% cover, 100% cover, 100% cover; */
+      /* 100px; */
+  }
+  /********** SP MAIN **********/
+  #gallery .container {
+    width: 90vw;
+    margin: 0 auto;
+  }
+
+  .g-img {
+    width: 90%;
+  }
+
+  .g-left {
+    text-align: center;
+  }
+  
+  .g-right {
+    text-align: center;
+  }
+
+  .inquiry {
+    width: 90vw;
+    /* margin-left: 30px;
+    margin-right: 30px; */
+  }
+
+  .inquiry::before, .inquiry::after {
+    content: none;
+  }
+
+  /********** SP FOOTER **********/
+  .between {
+    flex-direction: column;
+  }
+
+  .copyright {
+    margin-top: 40px;
+    margin-left: 20px;
+  }
+
+}
